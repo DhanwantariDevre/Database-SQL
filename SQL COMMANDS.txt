@@ -1,0 +1,721 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.38 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| hopegirls          |
+| hopegirlss         |
+| hydradb            |
+| information_schema |
+| mysql              |
+| nits               |
+| performance_schema |
+| pes                |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> use hydeabd;
+ERROR 1049 (42000): Unknown database 'hydeabd'
+mysql> use hydradb;
+Database changed
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_hydradb |
++-------------------+
+| customers         |
+| employee          |
+| newemp            |
++-------------------+
+3 rows in set (0.00 sec)
+
+mysql> DESC CUSTOMERS;
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| CID      | int           | NO   | PRI | NULL    |       |
+| CNAME    | varchar(25)   | NO   |     | NULL    |       |
+| CAGE     | int           | NO   |     | NULL    |       |
+| CADDRESS | varchar(30)   | YES  |     | NULL    |       |
+| CSALARY  | decimal(18,2) | YES  |     | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> DESC CUSTOMER;
+ERROR 1146 (42S02): Table 'hydradb.customer' doesn't exist
+mysql> drop customer;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'customer' at line 1
+mysql> drop table customer;
+ERROR 1051 (42S02): Unknown table 'hydradb.customer'
+mysql> drop table customers;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_hydradb |
++-------------------+
+| employee          |
+| newemp            |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE CUSTOMERS(
+    -> CID INT NOT NULL,
+    -> CNAME VARCHAR(25) NOT NULL,
+    -> CAGE INT NOT NULL,
+    -> CADDRESS VARCHAR(20),
+    -> CSALARY DECIMAL(18,2));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> DESC CUSTOMERS;
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| CID      | int           | NO   |     | NULL    |       |
+| CNAME    | varchar(25)   | NO   |     | NULL    |       |
+| CAGE     | int           | NO   |     | NULL    |       |
+| CADDRESS | varchar(20)   | YES  |     | NULL    |       |
+| CSALARY  | decimal(18,2) | YES  |     | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| hopegirls          |
+| hopegirlss         |
+| hydradb            |
+| information_schema |
+| mysql              |
+| nits               |
+| performance_schema |
+| pes                |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_hydradb |
++-------------------+
+| customers         |
+| employee          |
+| newemp            |
++-------------------+
+3 rows in set (0.00 sec)
+
+mysql> DROP TABLE EMPLOYEE;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC EMPLOYEE;
+ERROR 1146 (42S02): Table 'hydradb.employee' doesn't exist
+mysql> SELECT * FROM EMPLOYEE;
+ERROR 1146 (42S02): Table 'hydradb.employee' doesn't exist
+mysql> CREATE TABLE EMPLOYEE(
+    -> EID INT NOT NULL,
+    -> ENAME VARCHAR(25) NOT NULL,
+    -> EAGE INT NOT NULL,
+    -> EADDRESS VARCHAR(20),
+    -> ESALARY DECIMAL(18,2));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SELECT * FROM EMPLOYEE;
+Empty set (0.00 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_hydradb |
++-------------------+
+| customers         |
+| employee          |
+| newemp            |
++-------------------+
+3 rows in set (0.00 sec)
+
+mysql> DESC EMPLOYEE;
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| EID      | int           | NO   |     | NULL    |       |
+| ENAME    | varchar(25)   | NO   |     | NULL    |       |
+| EAGE     | int           | NO   |     | NULL    |       |
+| EADDRESS | varchar(20)   | YES  |     | NULL    |       |
+| ESALARY  | decimal(18,2) | YES  |     | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> DESC CUSTOMERS;
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| CID      | int           | NO   |     | NULL    |       |
+| CNAME    | varchar(25)   | NO   |     | NULL    |       |
+| CAGE     | int           | NO   |     | NULL    |       |
+| CADDRESS | varchar(20)   | YES  |     | NULL    |       |
+| CSALARY  | decimal(18,2) | YES  |     | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO CUSTOMERS VALUES (1, 'ABHAY', 21, 'AURANGABAD', 30000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO CUSTOMERS VALUES (2, 'ADITYA', 22, 'MUMBAI', 40000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO CUSTOMERS VALUES (3, 'BHUSHAN', 20, 'HYDERABAD', 35000),
+    -> (4, 'BHARTI', 21, 'NASIK', 38000);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM CUSTOMERS;
++-----+---------+------+------------+----------+
+| CID | CNAME   | CAGE | CADDRESS   | CSALARY  |
++-----+---------+------+------------+----------+
+|   1 | ABHAY   |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA  |   22 | MUMBAI     | 40000.00 |
+|   3 | BHUSHAN |   20 | HYDERABAD  | 35000.00 |
+|   4 | BHARTI  |   21 | NASIK      | 38000.00 |
++-----+---------+------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO CUSTOMERS VALUES (5, 'SHRUTI', 23, 'LASUR', 40000),
+    -> (6, 'KUNAL', 22, 'HYDERABAD', 42000),
+    -> (7,'DHANWANTARI', 22, 'PUNE', 45000),
+    -> (8,'SANKET', 25, 'MUMBAI', 52000);
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> SELECT * FROM CUSTOMERS;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   3 | BHUSHAN     |   20 | HYDERABAD  | 35000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   7 | DHANWANTARI |   22 | PUNE       | 45000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
++-----+-------------+------+------------+----------+
+8 rows in set (0.00 sec)
+
+mysql> INSERT INTO CUSTOMERS VALUES(9, 'HEMANT', 23, 'PUNE', 47000),
+    -> (10, 'AMOL', 22, 'MIYAPUR', 41000),
+    -> (11, 'SEVAKRAM', 23, 'GOLEGAON', 32000),
+    -> (12, 'RUCHITA', 21, 'AURANGABAD', 33000);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM CUSTOMERS;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   3 | BHUSHAN     |   20 | HYDERABAD  | 35000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   7 | DHANWANTARI |   22 | PUNE       | 45000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql> CREATE TABLE NEWEMP AS SELECT CNAME, CAGE, CADDRESS FROM CUSTOMERS;
+ERROR 1050 (42S01): Table 'NEWEMP' already exists
+mysql> CREATE TABLE NEWEMP1 AS SELECT CNAME, CAGE, CADDRESS FROM CUSTOMERS;
+Query OK, 12 rows affected (0.03 sec)
+Records: 12  Duplicates: 0  Warnings: 0
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_hydradb |
++-------------------+
+| customers         |
+| employee          |
+| newemp            |
+| newemp1           |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> DESC NEWEMP1;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| CNAME    | varchar(25) | NO   |     | NULL    |       |
+| CAGE     | int         | NO   |     | NULL    |       |
+| CADDRESS | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM NEWEMP1;
++-------------+------+------------+
+| CNAME       | CAGE | CADDRESS   |
++-------------+------+------------+
+| ABHAY       |   21 | AURANGABAD |
+| ADITYA      |   22 | MUMBAI     |
+| BHUSHAN     |   20 | HYDERABAD  |
+| BHARTI      |   21 | NASIK      |
+| SHRUTI      |   23 | LASUR      |
+| KUNAL       |   22 | HYDERABAD  |
+| DHANWANTARI |   22 | PUNE       |
+| SANKET      |   25 | MUMBAI     |
+| HEMANT      |   23 | PUNE       |
+| AMOL        |   22 | MIYAPUR    |
+| SEVAKRAM    |   23 | GOLEGAON   |
+| RUCHITA     |   21 | AURANGABAD |
++-------------+------+------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT CID, CNAME, CADDRESS, CSALARY FROM CUSTOMERS WHERE CSALARY>=40000;
++-----+-------------+-----------+----------+
+| CID | CNAME       | CADDRESS  | CSALARY  |
++-----+-------------+-----------+----------+
+|   2 | ADITYA      | MUMBAI    | 40000.00 |
+|   5 | SHRUTI      | LASUR     | 40000.00 |
+|   6 | KUNAL       | HYDERABAD | 42000.00 |
+|   7 | DHANWANTARI | PUNE      | 45000.00 |
+|   8 | SANKET      | MUMBAI    | 52000.00 |
+|   9 | HEMANT      | PUNE      | 47000.00 |
+|  10 | AMOL        | MIYAPUR   | 41000.00 |
++-----+-------------+-----------+----------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT CID, CNAME, CADDRESS, CSALARY FROM CUSTOMERS WHERE CNAME='SANKET';
++-----+--------+----------+----------+
+| CID | CNAME  | CADDRESS | CSALARY  |
++-----+--------+----------+----------+
+|   8 | SANKET | MUMBAI   | 52000.00 |
++-----+--------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT CID,CNAME FROM CUSTOMERS WHERE CID>1 AND CADDRESS='HYDERABAD' AND CSALARY>40000;
++-----+-------+
+| CID | CNAME |
++-----+-------+
+|   6 | KUNAL |
++-----+-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT CID,CNAME FROM CUSTOMERS WHERE CID>1 AND CADDRESS='MIYAPUR' AND CSALARY>40000;
++-----+-------+
+| CID | CNAME |
++-----+-------+
+|  10 | AMOL  |
++-----+-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT CID,CNAME FROM CUSTOMERS WHERE CID>5 AND CADDRESS='HYDERABAD' AND CSALARY>45000;
+Empty set (0.00 sec)
+
+mysql> SELECT CID,CNAME,CSALARY,CADDRESS FROM CUSTOMERS WHERE CNAME='SANKET';
++-----+--------+----------+----------+
+| CID | CNAME  | CSALARY  | CADDRESS |
++-----+--------+----------+----------+
+|   8 | SANKET | 52000.00 | MUMBAI   |
++-----+--------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT CID,CNAME,CSALARY,CADDRESS FROM CUSTOMERS WHERE CSALARY>35000 OR CAGE>=21;
++-----+-------------+----------+------------+
+| CID | CNAME       | CSALARY  | CADDRESS   |
++-----+-------------+----------+------------+
+|   1 | ABHAY       | 30000.00 | AURANGABAD |
+|   2 | ADITYA      | 40000.00 | MUMBAI     |
+|   4 | BHARTI      | 38000.00 | NASIK      |
+|   5 | SHRUTI      | 40000.00 | LASUR      |
+|   6 | KUNAL       | 42000.00 | HYDERABAD  |
+|   7 | DHANWANTARI | 45000.00 | PUNE       |
+|   8 | SANKET      | 52000.00 | MUMBAI     |
+|   9 | HEMANT      | 47000.00 | PUNE       |
+|  10 | AMOL        | 41000.00 | MIYAPUR    |
+|  11 | SEVAKRAM    | 32000.00 | GOLEGAON   |
+|  12 | RUCHITA     | 33000.00 | AURANGABAD |
++-----+-------------+----------+------------+
+11 rows in set (0.00 sec)
+
+mysql> UPDATE CUSTOMERS SET CSALARY=47000, CADDRESS='BEED' WHERE CID=3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT CID, CNAME, CADDRESS, CSALARY FROM CUSTOMERS WHERE CNAME='BHUSHAN';
++-----+---------+----------+----------+
+| CID | CNAME   | CADDRESS | CSALARY  |
++-----+---------+----------+----------+
+|   3 | BHUSHAN | BEED     | 47000.00 |
++-----+---------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE CUSTOMERS SET CSALARY=53000, CADDRESS='MUMBAI' WHERE CID=7 ;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM CUSTOMERS;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS ORDER BY CNAME DESC;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS ORDER BY CSALARY DESC;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS ORDER BY CNAME ASC;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS ORDER BY CSALARY ASC;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS ORDER BY (CASE CAGE
+    -> WHEN 20 THEN 1
+    -> WHEN 21 THEN 2
+    -> WHEN 22 THEN 3
+    -> WHEN 24 THEN 4
+    -> WHEN 25 THEN 5
+    -> ELSE 100 END), CADDRESS DESC;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS ORDER BY (CASE CAGE
+    -> WHEN 20 THEN 1
+    -> WHEN 21 THEN 2
+    -> WHEN 22 THEN 3
+    -> ELSE 100 END) ,CADDRESS ASC;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT CNAME, SUM(CSALARY) FROM CUSTOMERS GROUP BY CNAME;
++-------------+--------------+
+| CNAME       | SUM(CSALARY) |
++-------------+--------------+
+| ABHAY       |     30000.00 |
+| ADITYA      |     40000.00 |
+| BHUSHAN     |     47000.00 |
+| BHARTI      |     38000.00 |
+| SHRUTI      |     40000.00 |
+| KUNAL       |     42000.00 |
+| DHANWANTARI |     53000.00 |
+| SANKET      |     52000.00 |
+| HEMANT      |     47000.00 |
+| AMOL        |     41000.00 |
+| SEVAKRAM    |     32000.00 |
+| RUCHITA     |     33000.00 |
++-------------+--------------+
+12 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES (1, 'SHRUTI', 23, 'LASUR', 40000),
+    -> (2, 'ZARA', 22, 'HYDERABAD', 42000),
+    -> (3,'DHANWANTARI', 22, 'PUNE', 45000),
+    -> (4,'SANKET', 25, 'MUMBAI', 52000),
+    -> (5, 'ZOYA', 23, 'LASUR', 40000),
+    -> (6, 'SWAMI', 22, 'HYDERABAD', 42000),
+    -> (7,'DHANWANTARI', 22, 'PUNE', 45000),
+    -> (8,'SWAMI', 25, 'MUMBAI', 52000),
+    -> (10, 'MAYANK', 23, 'LASUR', 40000),
+    -> (11, 'ZARA', 22, 'HYDERABAD', 42000);
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM EMPLOYEE;
++-----+-------------+------+-----------+----------+
+| EID | ENAME       | EAGE | EADDRESS  | ESALARY  |
++-----+-------------+------+-----------+----------+
+|   1 | SHRUTI      |   23 | LASUR     | 40000.00 |
+|   2 | ZARA        |   22 | HYDERABAD | 42000.00 |
+|   3 | DHANWANTARI |   22 | PUNE      | 45000.00 |
+|   4 | SANKET      |   25 | MUMBAI    | 52000.00 |
+|   5 | ZOYA        |   23 | LASUR     | 40000.00 |
+|   6 | SWAMI       |   22 | HYDERABAD | 42000.00 |
+|   7 | DHANWANTARI |   22 | PUNE      | 45000.00 |
+|   8 | SWAMI       |   25 | MUMBAI    | 52000.00 |
+|  10 | MAYANK      |   23 | LASUR     | 40000.00 |
+|  11 | ZARA        |   22 | HYDERABAD | 42000.00 |
++-----+-------------+------+-----------+----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT ENAME, SUM(ESALARY) FROM EMPLOYEE GROUP BY ENAME;
++-------------+--------------+
+| ENAME       | SUM(ESALARY) |
++-------------+--------------+
+| SHRUTI      |     40000.00 |
+| ZARA        |     84000.00 |
+| DHANWANTARI |     90000.00 |
+| SANKET      |     52000.00 |
+| ZOYA        |     40000.00 |
+| SWAMI       |     94000.00 |
+| MAYANK      |     40000.00 |
++-------------+--------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEE LIMIT 3;
++-----+-------------+------+-----------+----------+
+| EID | ENAME       | EAGE | EADDRESS  | ESALARY  |
++-----+-------------+------+-----------+----------+
+|   1 | SHRUTI      |   23 | LASUR     | 40000.00 |
+|   2 | ZARA        |   22 | HYDERABAD | 42000.00 |
+|   3 | DHANWANTARI |   22 | PUNE      | 45000.00 |
++-----+-------------+------+-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS WHERE CID <= 5;
++-----+---------+------+------------+----------+
+| CID | CNAME   | CAGE | CADDRESS   | CSALARY  |
++-----+---------+------+------------+----------+
+|   1 | ABHAY   |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA  |   22 | MUMBAI     | 40000.00 |
+|   3 | BHUSHAN |   20 | BEED       | 47000.00 |
+|   4 | BHARTI  |   21 | NASIK      | 38000.00 |
+|   5 | SHRUTI  |   23 | LASUR      | 40000.00 |
++-----+---------+------+------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEE WHERE EID <= 5;
++-----+-------------+------+-----------+----------+
+| EID | ENAME       | EAGE | EADDRESS  | ESALARY  |
++-----+-------------+------+-----------+----------+
+|   1 | SHRUTI      |   23 | LASUR     | 40000.00 |
+|   2 | ZARA        |   22 | HYDERABAD | 42000.00 |
+|   3 | DHANWANTARI |   22 | PUNE      | 45000.00 |
+|   4 | SANKET      |   25 | MUMBAI    | 52000.00 |
+|   5 | ZOYA        |   23 | LASUR     | 40000.00 |
++-----+-------------+------+-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS
+    -> WHERE CSALARY LIKE '400%';
++-----+--------+------+----------+----------+
+| CID | CNAME  | CAGE | CADDRESS | CSALARY  |
++-----+--------+------+----------+----------+
+|   2 | ADITYA |   22 | MUMBAI   | 40000.00 |
+|   5 | SHRUTI |   23 | LASUR    | 40000.00 |
++-----+--------+------+----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS
+    -> WHERE CSALARY LIKE '%800%';
++-----+--------+------+----------+----------+
+| CID | CNAME  | CAGE | CADDRESS | CSALARY  |
++-----+--------+------+----------+----------+
+|   4 | BHARTI |   21 | NASIK    | 38000.00 |
++-----+--------+------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS
+    -> WHERE CSALARY LIKE '%70%';
++-----+---------+------+----------+----------+
+| CID | CNAME   | CAGE | CADDRESS | CSALARY  |
++-----+---------+------+----------+----------+
+|   3 | BHUSHAN |   20 | BEED     | 47000.00 |
+|   9 | HEMANT  |   23 | PUNE     | 47000.00 |
++-----+---------+------+----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS
+    -> WHERE CSALARY LIKE '__00%';
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT * FROM CUSTOMERS
+    -> WHERE CSALARY LIKE '__00%';
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   5 | SHRUTI      |   23 | LASUR      | 40000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
++-----+-------------+------+------------+----------+
+12 rows in set (0.00 sec)
+
+mysql> DELETE FROM CUSTOMERS WHERE CID=5;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
++-----+-------------+------+------------+----------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMERS;
++-----+-------------+------+------------+----------+
+| CID | CNAME       | CAGE | CADDRESS   | CSALARY  |
++-----+-------------+------+------------+----------+
+|   1 | ABHAY       |   21 | AURANGABAD | 30000.00 |
+|   2 | ADITYA      |   22 | MUMBAI     | 40000.00 |
+|   3 | BHUSHAN     |   20 | BEED       | 47000.00 |
+|   4 | BHARTI      |   21 | NASIK      | 38000.00 |
+|   6 | KUNAL       |   22 | HYDERABAD  | 42000.00 |
+|   7 | DHANWANTARI |   22 | MUMBAI     | 53000.00 |
+|   8 | SANKET      |   25 | MUMBAI     | 52000.00 |
+|   9 | HEMANT      |   23 | PUNE       | 47000.00 |
+|  10 | AMOL        |   22 | MIYAPUR    | 41000.00 |
+|  11 | SEVAKRAM    |   23 | GOLEGAON   | 32000.00 |
+|  12 | RUCHITA     |   21 | AURANGABAD | 33000.00 |
++-----+-------------+------+------------+----------+
+11 rows in set (0.00 sec)
